@@ -9,7 +9,7 @@ function initRoutes(fastify) {
     });
 
     fastify.get('/posts', async function(req, reply) {
-        var {server, port} = await portForward();
+        let {server, port} = await portForward();
 
         return axios.get(`http://localhost:${port}/posts`)
             .then(function(res) {
@@ -19,6 +19,6 @@ function initRoutes(fastify) {
                 server.close();
             });
     })
-};
+}
 
 module.exports = initRoutes;
